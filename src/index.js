@@ -1,17 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+let currentDate = new Date();
+ currentDate = currentDate.getHours();
+
+let cssStyle = {};
+
+let greeting = '';
+
+// it will return random images
+const randomImage1 = 'https://picsum.photos/600/500';
+// const randomImage2 = 'https://picsum.photos/600/500';
+
+
+if(currentDate>=1 && currentDate<12) {
+  greeting = 'Good Morning';
+  cssStyle.color = 'green';
+}else if(currentDate>=12 && currentDate<19) {
+  greeting = 'Good Afternoon';
+  cssStyle.color = 'Red';
+
+}else{
+  greeting = 'Good Evening';
+  cssStyle.color = 'gray';
+
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  
+  <>
+   <h1 className='heading'>Hello sir, <span style={cssStyle}> {greeting} </span></h1>
+  <div className='images'>
+   <img src={randomImage1} alt='random1' />
+   {/* <img src={randomImage2} alt='random2' /> */}
+  </div>
+  </>,
+
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
